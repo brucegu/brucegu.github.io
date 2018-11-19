@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="makefile,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BruceGu's blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="makefile 基础知识">
+<meta name="keywords" content="makefile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAKEFILE知识">
+<meta property="og:url" content="http://brucegu.github.io/2017/09/23/makefile-knowledges/index.html">
+<meta property="og:site_name" content="BruceGu&#39;s blog">
+<meta property="og:description" content="makefile 基础知识">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-07T12:17:40.269Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MAKEFILE知识">
+<meta name="twitter:description" content="makefile 基础知识">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://brucegu.github.io/2017/09/23/makefile-knowledges/">
+
+
+
+
+
+  <title>MAKEFILE知识 | BruceGu's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BruceGu's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://brucegu.github.io/2017/09/23/makefile-knowledges/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Gu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tvax4.sinaimg.cn/crop.0.0.996.996.180/7f31af54ly8fi8pjxth91j20ro0roq3v.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BruceGu's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MAKEFILE知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-23T09:00:00+08:00">
+                2017-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>makefile 基础知识<br><a id="more"></a></p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a href="http://wiki.ubuntu.com.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile:MakeFile%E4%BB%8B%E7%BB%8D" target="_blank" rel="noopener">http://wiki.ubuntu.com.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile:MakeFile%E4%BB%8B%E7%BB%8D</a></p>
+<h1 id="gmake-与-make"><a href="#gmake-与-make" class="headerlink" title="gmake 与 make"></a>gmake 与 make</h1><p>gmake 是GNU make的缩写，在大多数的linux系统中，make就是GNU Make，对于一些unix的系统，make指向系统自带的make，例如：BSD make.</p>
+<h1 id="makefile介绍"><a href="#makefile介绍" class="headerlink" title="makefile介绍"></a>makefile介绍</h1><p>make命令执行时，需要一个makefile文件来告诉他如何编译和链接程序。</p>
+<h1 id="makefile规则"><a href="#makefile规则" class="headerlink" title="makefile规则"></a>makefile规则</h1><p>makefile的编写规则如下：<br>target … : prerequisites …<br>    command<br>    …<br>    …<br>target可以是一个目标文件(object file)，也可以是一个可执行文件，还可以是一个标签（label，也就是伪目标）。<br>prerequisties是生成target所需要的文件。<br>command是make需要执行的命令（任意的shell命令），command之前必须有个TAB建。<br>这是一个依赖关系的描述，生成target文件依赖于prerequisties的这些文件，如果依赖文件中的任何文件都比target要新，那么就会运行command重新生成target。</p>
+<h1 id="makefile示例"><a href="#makefile示例" class="headerlink" title="makefile示例"></a>makefile示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">shap : combinator.o circle.o rectangle.o</span><br><span class="line">	gcc -o shap combinator.o circle.o rectangle.o</span><br><span class="line"></span><br><span class="line">combinator.o : combinator.c circle.h rectangle.h</span><br><span class="line">	gcc -c combinator.c</span><br><span class="line">circle.o : circle.c circle.h</span><br><span class="line">	gcc -c circle.c</span><br><span class="line">rectangle.o : rectangle.c rectangle.h</span><br><span class="line">	gcc -c rectangle.c</span><br><span class="line"></span><br><span class="line">clean :</span><br><span class="line">	del shap combinator.o circle.o rectangle.o</span><br></pre></td></tr></table></figure>
+<h1 id="make中使用变量"><a href="#make中使用变量" class="headerlink" title="make中使用变量"></a>make中使用变量</h1><p>从上面的示例可以看到，很多重复的地方，可以使用变量来替代：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">objects = combinator.o circle.o rectangle.o</span><br><span class="line">shap : $(objects)</span><br><span class="line">	gcc -o shap $(objects)</span><br><span class="line"></span><br><span class="line">combinator.o : combinator.c circle.h rectangle.h</span><br><span class="line">	gcc -c combinator.c</span><br><span class="line">circle.o : circle.c circle.h</span><br><span class="line">	gcc -c circle.c</span><br><span class="line">rectangle.o : rectangle.c rectangle.h</span><br><span class="line">	gcc -c rectangle.c</span><br><span class="line"></span><br><span class="line">clean :</span><br><span class="line">	del shap $(objects)</span><br></pre></td></tr></table></figure></p>
+<h1 id="make中的隐晦规则和伪目标"><a href="#make中的隐晦规则和伪目标" class="headerlink" title="make中的隐晦规则和伪目标"></a>make中的隐晦规则和伪目标</h1><p>GNU的make相当强大，他可以自动推导出文件以及文件依赖关系后面的命令，对于每一个[.o]文件，他会自动把[.c]文件加到依赖关系中，甚至后面都有 gcc -c [.c]这样的命令，make一会自动推导(nmake中，只能推导依赖关系，好像没法推导命令)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">objects = combinator.o circle.o rectangle.o</span><br><span class="line">shap : $(objects)</span><br><span class="line">	gcc -o shap.exe $(objects)</span><br><span class="line"></span><br><span class="line">combinator.o : circle.h rectangle.h</span><br><span class="line">circle.o : circle.h</span><br><span class="line">rectangle.o : rectangle.h</span><br><span class="line"></span><br><span class="line">clean :</span><br><span class="line">	-del shap.exe $(objects)</span><br></pre></td></tr></table></figure></p>
+<p>这里的.PHONY表示clean是一个伪目标。这里在del前加-，意味着也许某些文件会出问题，但不要管，继续做后面的事情</p>
+<h1 id="makefile内容"><a href="#makefile内容" class="headerlink" title="makefile内容"></a>makefile内容</h1><p>makefile文件中有五个东西：显示规则，隐示规则，变量定义，文件指示和注释<br>显示规则：显示书写出来，如何生成目标文件，依赖文件和生成文件的命令<br>隐示规则：是由make命令推导出来，这样方便写出简洁的makefile<br>变量定义：可以定义一些变量，一般都是字符串变量，当make命令执行的时候，会把变量的值替换到使用的地方<br>文件指示：</p>
+<pre><code>* 在一个makefile中引用另一个makefile，使用include &lt;filename&gt;;
+* 根据某些情况制定makefile中的有效部分
+* 定义一个多行的命令
+</code></pre><p>注释：用#来写注释</p>
+<h1 id="make的工作方式"><a href="#make的工作方式" class="headerlink" title="make的工作方式"></a>make的工作方式</h1><ul>
+<li>make命令会寻找当前目录下名为：GNUmakefile, makefile, Makefile的文件</li>
+<li>读入所有的makefile</li>
+<li>读入被include的makefile</li>
+<li>初始化文件中的变量</li>
+<li>推导隐晦规则，并分析所有规则</li>
+<li>为所有文件建立依赖关系</li>
+<li>根据依赖关系，决定哪些目标重新生成</li>
+<li>执行生成命令</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/makefile/" rel="tag"># makefile</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/23/gdb-knowledges/" rel="next" title="GDB知识">
+                <i class="fa fa-chevron-left"></i> GDB知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/25/bubble-sort/" rel="prev" title="冒泡排序">
+                冒泡排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="http://tvax4.sinaimg.cn/crop.0.0.996.996.180/7f31af54ly8fi8pjxth91j20ro0roq3v.jpg" alt="Bruce Gu">
+          <p class="site-author-name" itemprop="name">Bruce Gu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/kingofhuman" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gmake-与-make"><span class="nav-number">2.</span> <span class="nav-text">gmake 与 make</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#makefile介绍"><span class="nav-number">3.</span> <span class="nav-text">makefile介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#makefile规则"><span class="nav-number">4.</span> <span class="nav-text">makefile规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#makefile示例"><span class="nav-number">5.</span> <span class="nav-text">makefile示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make中使用变量"><span class="nav-number">6.</span> <span class="nav-text">make中使用变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make中的隐晦规则和伪目标"><span class="nav-number">7.</span> <span class="nav-text">make中的隐晦规则和伪目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#makefile内容"><span class="nav-number">8.</span> <span class="nav-text">makefile内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make的工作方式"><span class="nav-number">9.</span> <span class="nav-text">make的工作方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bruce Gu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
