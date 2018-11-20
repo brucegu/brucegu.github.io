@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://brucegu.github.io/2018/11/19/variadic-function/</loc>
+    
+    <lastmod>2018-11-20T00:01:33.065Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://brucegu.github.io/2018/11/19/strict-weak-ordering/</loc>
     
     <lastmod>2018-11-19T12:39:54.958Z</lastmod>
@@ -9,14 +16,14 @@
   </url>
   
   <url>
-    <loc>http://brucegu.github.io/2017/09/23/gdb-knowledges/</loc>
+    <loc>http://brucegu.github.io/2017/09/23/makefile-knowledges/</loc>
     
     <lastmod>2018-11-07T12:17:40.269Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://brucegu.github.io/2017/09/23/makefile-knowledges/</loc>
+    <loc>http://brucegu.github.io/2017/09/23/gdb-knowledges/</loc>
     
     <lastmod>2018-11-07T12:17:40.269Z</lastmod>
     
@@ -37,14 +44,14 @@
   </url>
   
   <url>
-    <loc>http://brucegu.github.io/2017/09/23/basick-knowledges/</loc>
+    <loc>http://brucegu.github.io/2017/09/25/bubble-sort/</loc>
     
     <lastmod>2018-11-07T12:17:40.268Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://brucegu.github.io/2017/09/25/bubble-sort/</loc>
+    <loc>http://brucegu.github.io/2017/09/23/basick-knowledges/</loc>
     
     <lastmod>2018-11-07T12:17:40.268Z</lastmod>
     

@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="GCC,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -96,18 +96,17 @@
 
 
 
-<meta name="description" content="什么是GCC, gcc, g++，他们之间的关系是什么，gcc和g++的区别是什么">
-<meta name="keywords" content="GCC">
+<meta name="description" content="variadic function是可变参数的函数。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++ 基础知识">
-<meta property="og:url" content="http://brucegu.github.io/2017/09/23/basick-knowledges/index.html">
+<meta property="og:title" content="variadic function">
+<meta property="og:url" content="http://brucegu.github.io/2018/11/19/variadic-function/index.html">
 <meta property="og:site_name" content="BruceGu&#39;s blog">
-<meta property="og:description" content="什么是GCC, gcc, g++，他们之间的关系是什么，gcc和g++的区别是什么">
+<meta property="og:description" content="variadic function是可变参数的函数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T12:17:40.268Z">
+<meta property="og:updated_time" content="2018-11-20T00:01:33.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++ 基础知识">
-<meta name="twitter:description" content="什么是GCC, gcc, g++，他们之间的关系是什么，gcc和g++的区别是什么">
+<meta name="twitter:title" content="variadic function">
+<meta name="twitter:description" content="variadic function是可变参数的函数。">
 
 
 
@@ -136,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://brucegu.github.io/2017/09/23/basick-knowledges/">
+  <link rel="canonical" href="http://brucegu.github.io/2018/11/19/variadic-function/">
 
 
 
 
 
-  <title>C/C++ 基础知识 | BruceGu's blog</title>
+  <title>variadic function | BruceGu's blog</title>
   
 
 
@@ -285,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://brucegu.github.io/2017/09/23/basick-knowledges/">
+    <link itemprop="mainEntityOfPage" href="http://brucegu.github.io/2018/11/19/variadic-function/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bruce Gu">
@@ -302,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C/C++ 基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">variadic function</h1>
         
 
         <div class="post-meta">
@@ -314,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-23T08:12:02+08:00">
-                2017-09-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-19T14:06:10+08:00">
+                2018-11-19
               </time>
             
 
@@ -374,48 +373,10 @@
       
 
       
-        <p>什么是GCC, gcc, g++，他们之间的关系是什么，gcc和g++的区别是什么<br><a id="more"></a></p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>以下内容非原创，皆来源于网络。</p>
-<h1 id="GCC，gcc-与-g"><a href="#GCC，gcc-与-g" class="headerlink" title="GCC，gcc 与 g++"></a>GCC，gcc 与 g++</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li>GCC：GNU Complier Collection，它可以编译C，C++等语言</li>
-<li>gcc：GCC中的GNU C Complier</li>
-<li>g++：GCC中的GNU C++ Complier</li>
-</ul>
-<p>本质而言，gcc和g++并不是编译器，也不是编译器的集合，他们只是一种驱动器，根据要编译的文件类型，调用对应的GNU的编译器而已，比如，用gcc<br>编译一个文件，会有以下几个步骤：</p>
-<ol>
-<li>Call a preprocessor, like cpp</li>
-<li>Call an actual compiler, like cc or cc1</li>
-<li>Call an assembler, like as</li>
-<li>Call a linker, like ld</li>
-</ol>
-<p>由于编译器是可以更换的，所以gcc不仅仅可以编译C文件，所以，更准确的说法是：gcc调用complier，而g++调用C++ compiler。</p>
-<h2 id="gcc-与-g-区别："><a href="#gcc-与-g-区别：" class="headerlink" title="gcc 与 g++区别："></a>gcc 与 g++区别：</h2><ul>
-<li>对于<em>.c和</em>.cpp文件，gcc分别当作c和cpp文件编译</li>
-<li>对于<em>.c和</em>.cpp文件，g++都当作cpp文件编译</li>
-<li>使用g++编译文件时，g++会自动链接标准库STL，而gcc不会</li>
-<li>gcc在编译c文件的时候，可以使用的预定义宏是比较少的</li>
-<li>gcc在编译cpp文件时/g++在编译c和cpp文件时，会加入一些额外的宏：这些宏如下：<ul>
-<li>#define <strong>GXX_WEAK</strong> 1</li>
-<li>#define __cplusplus 1</li>
-<li>#define __DEPRECATED 1</li>
-<li>#define <strong>GNUG</strong> 4</li>
-<li>#define __EXCEPTIONS 1</li>
-<li>#define <strong>private_extern</strong> extern</li>
-</ul>
-</li>
-</ul>
-<p>在使用gcc编译cpp文件时，为了能够使用STL，需要加参数 -lstdc++，这并不代表gcc -lstdc++与g++等价，他们的区别不仅仅是这个。</p>
-<h2 id="常用命令参数"><a href="#常用命令参数" class="headerlink" title="常用命令参数"></a>常用命令参数</h2><ul>
-<li>-g turn on debugging (so GDB gives more friendly output)</li>
-<li>-Wall turn on most warning</li>
-<li>-O和-O2 turn on optimizations</li>
-<li>-o name of the output file</li>
-<li>-c output an object file</li>
-<li>-I specify an included directory</li>
-<li>-L specify a lib directory</li>
-<li>-l link with a library</li>
-</ul>
-
+        <p>variadic function是可变参数的函数。<br><a id="more"></a></p>
+<h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span>;</span><br></pre></td></tr></table></figure>
+<h1 id="使用可变参数"><a href="#使用可变参数" class="headerlink" title="使用可变参数"></a>使用可变参数</h1><p>c++中可以使用宏va_list, va_start, va_arg, va_end来使用可变参数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list ap;</span><br><span class="line">    va_start( ap, count );</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"void test( int "</span> &lt;&lt; count &lt;&lt; <span class="string">", "</span>;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"int "</span> &lt;&lt; va_arg( ap, <span class="keyword">int</span> ) &lt;&lt; <span class="string">", "</span>; <span class="comment">//第二个参数是可变参数的类型</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" )"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    va_end( ap );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -430,12 +391,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/GCC/" rel="tag"># GCC</a>
-          
-        </div>
-      
 
       
       
@@ -445,14 +400,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/27/dotnet-introduce/" rel="next" title=".NET Introduce">
+                <i class="fa fa-chevron-left"></i> .NET Introduce
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/23/gdb-knowledges/" rel="prev" title="GDB知识">
-                GDB知识 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/19/strict-weak-ordering/" rel="prev" title="strict weak ordering">
+                strict weak ordering <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -605,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC，gcc-与-g"><span class="nav-number">2.</span> <span class="nav-text">GCC，gcc 与 g++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-与-g-区别："><span class="nav-number">2.2.</span> <span class="nav-text">gcc 与 g++区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令参数"><span class="nav-number">2.3.</span> <span class="nav-text">常用命令参数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用可变参数"><span class="nav-number">2.</span> <span class="nav-text">使用可变参数</span></a></li></ol></div>
             
 
           </div>

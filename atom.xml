@@ -39,6 +39,26 @@
   </entry>
   
   <entry>
+    <title>variadic function</title>
+    <link href="http://brucegu.github.io/2018/11/19/variadic-function/"/>
+    <id>http://brucegu.github.io/2018/11/19/variadic-function/</id>
+    <published>2018-11-19T06:06:10.000Z</published>
+    <updated>2018-11-20T00:01:33.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>variadic function是可变参数的函数。<br><a id="more"></a></p><h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span>;</span><br></pre></td></tr></table></figure><h1 id="使用可变参数"><a href="#使用可变参数" class="headerlink" title="使用可变参数"></a>使用可变参数</h1><p>c++中可以使用宏va_list, va_start, va_arg, va_end来使用可变参数。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list ap;</span><br><span class="line">    va_start( ap, count );</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"void test( int "</span> &lt;&lt; count &lt;&lt; <span class="string">", "</span>;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"int "</span> &lt;&lt; va_arg( ap, <span class="keyword">int</span> ) &lt;&lt; <span class="string">", "</span>; <span class="comment">//第二个参数是可变参数的类型</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" )"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    va_end( ap );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;variadic function是可变参数的函数。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://brucegu.github.io/categories/C-C/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>.NET Introduce</title>
     <link href="http://brucegu.github.io/2017/09/27/dotnet-introduce/"/>
     <id>http://brucegu.github.io/2017/09/27/dotnet-introduce/</id>
