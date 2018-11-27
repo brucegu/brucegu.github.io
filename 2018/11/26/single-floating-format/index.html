@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="BruceGu&#39;s blog">
 <meta property="og:description" content="本文内容来自wiki 单精度浮点数在IEEE 754-2008标准中， 32位二进制格式被称为binary32，在IEEE 754-1985被称为single。IEEE 754还制定了其他的浮点数，比如64位二进制格式的双精度浮点数，以及最近基于十进制的表示。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-27T12:35:40.200Z">
+<meta property="og:updated_time" content="2018-11-27T12:40:23.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="single precision floating point format">
 <meta name="twitter:description" content="本文内容来自wiki 单精度浮点数在IEEE 754-2008标准中， 32位二进制格式被称为binary32，在IEEE 754-1985被称为single。IEEE 754还制定了其他的浮点数，比如64位二进制格式的双精度浮点数，以及最近基于十进制的表示。">
@@ -378,8 +378,9 @@
 <ul>
 <li>1bit表示符号</li>
 <li>8bits表示指数</li>
-<li>24bits表示有效精度（实际存储只用了23bits）<br>这决定了他有6-9个有效数字（十进制）的精度。如果一个最多只有6个有效数字的十进制数可以被转换为IEEE 754单精度浮点数，那么转换回数字字符串时，最终结果必须和原来的十进制数一样。如果一个单精度浮点数可以转换为至少9位有效数字的十进制数，那么转回单精度浮点数时，必须和原始单精度数一样。<br>计算公式：<br>(-1)<sup>sign</sup> <em> 2<sup>e-127</sup> </em> (1 + ∑( b<sub>23-i</sub> * 2<sup>-i</sup>)) (1 &lt;= i &lt;=23)<br>sign 是符号位数值<br>e 是指数位数值<br>b<sub>23-i</sub> 是有效数字位数值</li>
+<li>24bits表示有效精度（实际存储只用了23bits）</li>
 </ul>
+<p>这决定了他有6-9个有效数字（十进制）的精度。如果一个最多只有6个有效数字的十进制数可以被转换为IEEE 754单精度浮点数，那么转换回数字字符串时，最终结果必须和原来的十进制数一样。如果一个单精度浮点数可以转换为至少9位有效数字的十进制数，那么转回单精度浮点数时，必须和原始单精度数一样。<br>计算公式：<br>(-1)<sup>sign</sup> <em> 2<sup>e-127</sup> </em> (1 + ∑( b<sub>23-i</sub> * 2<sup>-i</sup>)) (1 &lt;= i &lt;=23)<br>sign 是符号位数值<br>e 是指数位数值<br>b<sub>23-i</sub> 是有效数字位数值</p>
 <p>这其中有不少公式计算，详细可以看wiki。</p>
 <h1 id="与十进制之间转换"><a href="#与十进制之间转换" class="headerlink" title="与十进制之间转换"></a>与十进制之间转换</h1><p>(12.375)<sub>10</sub> <br><br>= (12)<sub>10</sub> + (0.375)<sub>10</sub> <br><br>= (1100)<sub>2</sub> + (.011)<sub>2</sub> <br><br>= (1100.011)<sub>2</sub> <br><br>= (1.100011)<sub>10</sub> * 2<sup>3</sup> <br><br>符号部分为0，指数部分为3+127= 1000 0010，有效数字部分为1000 1100 0000 0000 0000 000</p>
 <p>这其中0.375是通过如下方式转换的：<br>0.375 <em> 2   = 0 + 0.750     =&gt; 0 <br><br>0.750 </em> 2   = 1 + 0.5       =&gt; 1 <br><br>0.5 * 2     = 1 + 0.0       =&gt; 1 <br></p>
@@ -407,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/19/variadic-function/" rel="next" title="variadic function">
-                <i class="fa fa-chevron-left"></i> variadic function
+              <a href="/2018/11/19/strict-weak-ordering/" rel="next" title="strict weak ordering">
+                <i class="fa fa-chevron-left"></i> strict weak ordering
               </a>
             
           </div>

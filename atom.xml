@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucegu.github.io/"/>
-  <updated>2018-11-27T12:35:40.200Z</updated>
+  <updated>2018-11-27T12:40:23.313Z</updated>
   <id>http://brucegu.github.io/</id>
   
   <author>
@@ -21,33 +21,13 @@
     <link href="http://brucegu.github.io/2018/11/26/single-floating-format/"/>
     <id>http://brucegu.github.io/2018/11/26/single-floating-format/</id>
     <published>2018-11-26T12:06:10.000Z</published>
-    <updated>2018-11-27T12:35:40.200Z</updated>
+    <updated>2018-11-27T12:40:23.313Z</updated>
     
-    <content type="html"><![CDATA[<p>本文内容来自<a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format" target="_blank" rel="noopener">wiki</a> <br><br>单精度浮点数在IEEE 754-2008标准中， 32位二进制格式被称为binary32，在IEEE 754-1985被称为single。IEEE 754还制定了其他的浮点数，比如64位二进制格式的双精度浮点数，以及最近基于十进制的表示。<br><a id="more"></a></p><h1 id="单精度浮点型格式"><a href="#单精度浮点型格式" class="headerlink" title="单精度浮点型格式"></a>单精度浮点型格式</h1><p>单精度浮点型是由32bits组成的：</p><ul><li>1bit表示符号</li><li>8bits表示指数</li><li>24bits表示有效精度（实际存储只用了23bits）<br>这决定了他有6-9个有效数字（十进制）的精度。如果一个最多只有6个有效数字的十进制数可以被转换为IEEE 754单精度浮点数，那么转换回数字字符串时，最终结果必须和原来的十进制数一样。如果一个单精度浮点数可以转换为至少9位有效数字的十进制数，那么转回单精度浮点数时，必须和原始单精度数一样。<br>计算公式：<br>(-1)<sup>sign</sup> <em> 2<sup>e-127</sup> </em> (1 + ∑( b<sub>23-i</sub> * 2<sup>-i</sup>)) (1 &lt;= i &lt;=23)<br>sign 是符号位数值<br>e 是指数位数值<br>b<sub>23-i</sub> 是有效数字位数值</li></ul><p>这其中有不少公式计算，详细可以看wiki。</p><h1 id="与十进制之间转换"><a href="#与十进制之间转换" class="headerlink" title="与十进制之间转换"></a>与十进制之间转换</h1><p>(12.375)<sub>10</sub> <br><br>= (12)<sub>10</sub> + (0.375)<sub>10</sub> <br><br>= (1100)<sub>2</sub> + (.011)<sub>2</sub> <br><br>= (1100.011)<sub>2</sub> <br><br>= (1.100011)<sub>10</sub> * 2<sup>3</sup> <br><br>符号部分为0，指数部分为3+127= 1000 0010，有效数字部分为1000 1100 0000 0000 0000 000</p><p>这其中0.375是通过如下方式转换的：<br>0.375 <em> 2   = 0 + 0.750     =&gt; 0 <br><br>0.750 </em> 2   = 1 + 0.5       =&gt; 1 <br><br>0.5 * 2     = 1 + 0.0       =&gt; 1 <br></p>]]></content>
+    <content type="html"><![CDATA[<p>本文内容来自<a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format" target="_blank" rel="noopener">wiki</a> <br><br>单精度浮点数在IEEE 754-2008标准中， 32位二进制格式被称为binary32，在IEEE 754-1985被称为single。IEEE 754还制定了其他的浮点数，比如64位二进制格式的双精度浮点数，以及最近基于十进制的表示。<br><a id="more"></a></p><h1 id="单精度浮点型格式"><a href="#单精度浮点型格式" class="headerlink" title="单精度浮点型格式"></a>单精度浮点型格式</h1><p>单精度浮点型是由32bits组成的：</p><ul><li>1bit表示符号</li><li>8bits表示指数</li><li>24bits表示有效精度（实际存储只用了23bits）</li></ul><p>这决定了他有6-9个有效数字（十进制）的精度。如果一个最多只有6个有效数字的十进制数可以被转换为IEEE 754单精度浮点数，那么转换回数字字符串时，最终结果必须和原来的十进制数一样。如果一个单精度浮点数可以转换为至少9位有效数字的十进制数，那么转回单精度浮点数时，必须和原始单精度数一样。<br>计算公式：<br>(-1)<sup>sign</sup> <em> 2<sup>e-127</sup> </em> (1 + ∑( b<sub>23-i</sub> * 2<sup>-i</sup>)) (1 &lt;= i &lt;=23)<br>sign 是符号位数值<br>e 是指数位数值<br>b<sub>23-i</sub> 是有效数字位数值</p><p>这其中有不少公式计算，详细可以看wiki。</p><h1 id="与十进制之间转换"><a href="#与十进制之间转换" class="headerlink" title="与十进制之间转换"></a>与十进制之间转换</h1><p>(12.375)<sub>10</sub> <br><br>= (12)<sub>10</sub> + (0.375)<sub>10</sub> <br><br>= (1100)<sub>2</sub> + (.011)<sub>2</sub> <br><br>= (1100.011)<sub>2</sub> <br><br>= (1.100011)<sub>10</sub> * 2<sup>3</sup> <br><br>符号部分为0，指数部分为3+127= 1000 0010，有效数字部分为1000 1100 0000 0000 0000 000</p><p>这其中0.375是通过如下方式转换的：<br>0.375 <em> 2   = 0 + 0.750     =&gt; 0 <br><br>0.750 </em> 2   = 1 + 0.5       =&gt; 1 <br><br>0.5 * 2     = 1 + 0.0       =&gt; 1 <br></p>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;本文内容来自&lt;a href=&quot;https://en.wikipedia.org/wiki/Single-precision_floating-point_format&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;wiki&lt;/a&gt; &lt;br&gt;&lt;br&gt;单精度浮点数在IEEE 754-2008标准中， 32位二进制格式被称为binary32，在IEEE 754-1985被称为single。IEEE 754还制定了其他的浮点数，比如64位二进制格式的双精度浮点数，以及最近基于十进制的表示。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://brucegu.github.io/categories/C-C/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>variadic function</title>
-    <link href="http://brucegu.github.io/2018/11/19/variadic-function/"/>
-    <id>http://brucegu.github.io/2018/11/19/variadic-function/</id>
-    <published>2018-11-19T06:06:10.000Z</published>
-    <updated>2018-11-20T00:01:33.065Z</updated>
-    
-    <content type="html"><![CDATA[<p>variadic function是可变参数的函数。<br><a id="more"></a></p><h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span>;</span><br></pre></td></tr></table></figure><h1 id="使用可变参数"><a href="#使用可变参数" class="headerlink" title="使用可变参数"></a>使用可变参数</h1><p>c++中可以使用宏va_list, va_start, va_arg, va_end来使用可变参数。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list ap;</span><br><span class="line">    va_start( ap, count );</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"void test( int "</span> &lt;&lt; count &lt;&lt; <span class="string">", "</span>;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"int "</span> &lt;&lt; va_arg( ap, <span class="keyword">int</span> ) &lt;&lt; <span class="string">", "</span>; <span class="comment">//第二个参数是可变参数的类型</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" )"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    va_end( ap );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;variadic function是可变参数的函数。&lt;br&gt;
     
     </summary>
     
@@ -75,6 +55,26 @@
     
     
       <category term="algorithm" scheme="http://brucegu.github.io/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>variadic function</title>
+    <link href="http://brucegu.github.io/2018/11/19/variadic-function/"/>
+    <id>http://brucegu.github.io/2018/11/19/variadic-function/</id>
+    <published>2018-11-19T06:06:10.000Z</published>
+    <updated>2018-11-20T00:01:33.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>variadic function是可变参数的函数。<br><a id="more"></a></p><h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span>;</span><br></pre></td></tr></table></figure><h1 id="使用可变参数"><a href="#使用可变参数" class="headerlink" title="使用可变参数"></a>使用可变参数</h1><p>c++中可以使用宏va_list, va_start, va_arg, va_end来使用可变参数。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span> <span class="params">( <span class="keyword">int</span> count, ... )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list ap;</span><br><span class="line">    va_start( ap, count );</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"void test( int "</span> &lt;&lt; count &lt;&lt; <span class="string">", "</span>;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"int "</span> &lt;&lt; va_arg( ap, <span class="keyword">int</span> ) &lt;&lt; <span class="string">", "</span>; <span class="comment">//第二个参数是可变参数的类型</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" )"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    va_end( ap );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;variadic function是可变参数的函数。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://brucegu.github.io/categories/C-C/"/>
+    
     
   </entry>
   
